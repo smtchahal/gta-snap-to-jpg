@@ -144,10 +144,7 @@ class App extends React.PureComponent {
           <Ul>
             {this.state.images.map((image, index) => (
               <Li key={index}>
-                <a
-                  href={`Click to download ${image.src}`}
-                  download={image.name}
-                >
+                <a href={image.src} download={image.name}>
                   <Img src={image.src} title={image.name} />
                 </a>
                 <span>{image.name}</span>
