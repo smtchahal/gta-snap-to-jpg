@@ -117,8 +117,8 @@ class App extends React.PureComponent {
 
   render = () => (
     <div className="container" style={{ textAlign: 'center' }}>
-      <h1>GTA V Snapmatic to JPEG converter</h1>
-      <p>A simple tool to convert your GTA V Snapmatic snaps to JPEG files.</p>
+      <h1>GTA V Snapmatic to JPEG / JPG converter</h1>
+      <p>A simple tool to convert your GTA V Snapmatic snaps to JPEG / JPG files.</p>
       <p>
         <b>Note:</b> This only works locally. All conversion takes place in your
         browser. No files are uploaded.
