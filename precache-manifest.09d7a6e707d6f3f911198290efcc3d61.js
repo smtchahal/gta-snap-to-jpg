@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "15957360e3c403758d307c1e45beef99",
+    "revision": "a8ad6e296ef24eb9828a02425bee0e05",
     "url": "/gta-snap-to-jpg/index.html"
   },
   {
