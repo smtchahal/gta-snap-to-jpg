@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "480396319bdbe7645a8c4bbd562c83df",
+    "revision": "00b86e01fdf6ae95971b6916753deb46",
     "url": "/gta-snap-to-jpg/index.html"
   },
   {
-    "revision": "5e1f932c7df37c01014a",
+    "revision": "80e302ef021d7cce73a3",
     "url": "/gta-snap-to-jpg/static/css/main.439e641f.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gta-snap-to-jpg/static/js/2.35b8e28f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5e1f932c7df37c01014a",
-    "url": "/gta-snap-to-jpg/static/js/main.fa964e20.chunk.js"
+    "revision": "80e302ef021d7cce73a3",
+    "url": "/gta-snap-to-jpg/static/js/main.c9267ae8.chunk.js"
   },
   {
     "revision": "e8c4df6b79533e0a8272",
