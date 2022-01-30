@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/gta-snap-to-jpg/precache-manifest.eecf27f1e506488305e9460f0ce94a2a.js"
+  "/gta-snap-to-jpg/precache-manifest.2fca185d1971625b745a453b8a8fc1aa.js"
 );
 
 self.addEventListener('message', (event) => {

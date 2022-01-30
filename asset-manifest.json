@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/gta-snap-to-jpg/static/css/main.439e641f.chunk.css",
-    "main.js": "/gta-snap-to-jpg/static/js/main.c9267ae8.chunk.js",
-    "main.js.map": "/gta-snap-to-jpg/static/js/main.c9267ae8.chunk.js.map",
+    "main.js": "/gta-snap-to-jpg/static/js/main.44baecf1.chunk.js",
+    "main.js.map": "/gta-snap-to-jpg/static/js/main.44baecf1.chunk.js.map",
     "runtime-main.js": "/gta-snap-to-jpg/static/js/runtime-main.88af2bb8.js",
     "runtime-main.js.map": "/gta-snap-to-jpg/static/js/runtime-main.88af2bb8.js.map",
-    "static/js/2.35b8e28f.chunk.js": "/gta-snap-to-jpg/static/js/2.35b8e28f.chunk.js",
-    "static/js/2.35b8e28f.chunk.js.map": "/gta-snap-to-jpg/static/js/2.35b8e28f.chunk.js.map",
+    "static/js/2.067111d1.chunk.js": "/gta-snap-to-jpg/static/js/2.067111d1.chunk.js",
+    "static/js/2.067111d1.chunk.js.map": "/gta-snap-to-jpg/static/js/2.067111d1.chunk.js.map",
     "index.html": "/gta-snap-to-jpg/index.html",
-    "precache-manifest.eecf27f1e506488305e9460f0ce94a2a.js": "/gta-snap-to-jpg/precache-manifest.eecf27f1e506488305e9460f0ce94a2a.js",
+    "precache-manifest.2fca185d1971625b745a453b8a8fc1aa.js": "/gta-snap-to-jpg/precache-manifest.2fca185d1971625b745a453b8a8fc1aa.js",
     "service-worker.js": "/gta-snap-to-jpg/service-worker.js",
     "static/css/main.439e641f.chunk.css.map": "/gta-snap-to-jpg/static/css/main.439e641f.chunk.css.map",
-    "static/js/2.35b8e28f.chunk.js.LICENSE.txt": "/gta-snap-to-jpg/static/js/2.35b8e28f.chunk.js.LICENSE.txt"
+    "static/js/2.067111d1.chunk.js.LICENSE.txt": "/gta-snap-to-jpg/static/js/2.067111d1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.88af2bb8.js",
-    "static/js/2.35b8e28f.chunk.js",
+    "static/js/2.067111d1.chunk.js",
     "static/css/main.439e641f.chunk.css",
-    "static/js/main.c9267ae8.chunk.js"
+    "static/js/main.44baecf1.chunk.js"
   ]
 }
