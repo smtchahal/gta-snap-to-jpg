@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import StyledDropzone from './StyledDropzone';
-import { getNameAndJpg } from '../helpers/util';
+import { getNameAndJpg, Image } from '../helpers/util';
 
 const Button = styled.button`
   cursor: pointer;
@@ -42,17 +42,17 @@ const DropzoneContainer = styled.div`
 `;
 
 const App = () => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<Image[]>([]);
 
-  const handleFileSelect = async files => {
+  const handleFileSelect = async (files: File[]) => {
     if (files.length === 0) {
       return;
     }
 
     let error = false;
-    const newImages = [];
+    const newImages: Image[] = [];
     for await (const file of files) {
-      const image = await getNameAndJpg(file);
+      let image = await getNameAndJpg(file);
       if (image) {
         newImages.push(image);
       } else {

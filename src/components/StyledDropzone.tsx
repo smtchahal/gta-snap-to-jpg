@@ -2,6 +2,10 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { useDropzone } from 'react-dropzone';
 
+interface FileInputProps {
+  isDragAccept: boolean;
+}
+
 const lightGreen = '#8bff8b';
 
 const acceptStyle = css`
@@ -21,10 +25,16 @@ const FileInput = styled.div`
     outline: none;
   }
 
-  ${({ isDragAccept }) => isDragAccept && acceptStyle}
+  ${({ isDragAccept }: FileInputProps) => isDragAccept && acceptStyle}
 `;
 
-const StyledDropzone = ({ onDrop }) => {
+export interface Props {
+  onDrop: {
+    (files: File[]): void;
+  };
+}
+
+const StyledDropzone = ({ onDrop }: Props) => {
   const {
     getRootProps,
     getInputProps,
