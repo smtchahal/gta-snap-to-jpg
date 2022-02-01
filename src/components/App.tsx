@@ -84,7 +84,9 @@ const App = () => {
         browser. No files are uploaded.
       </p>
       <DropzoneContainer>
-        <StyledDropzone onDrop={handleFileSelect} />
+        <StyledDropzone onDrop={handleFileSelect}>
+          Click here to select files, or drag and drop.
+        </StyledDropzone>
       </DropzoneContainer>
       {images.length > 0 && (
         <>

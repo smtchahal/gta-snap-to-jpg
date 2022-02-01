@@ -32,9 +32,10 @@ export interface Props {
   onDrop: {
     (files: File[]): void;
   };
+  children: any;
 }
 
-const StyledDropzone = ({ onDrop }: Props) => {
+const StyledDropzone = ({ onDrop, children }: Props) => {
   const {
     getRootProps,
     getInputProps,
@@ -46,7 +47,7 @@ const StyledDropzone = ({ onDrop }: Props) => {
   return (
     <FileInput {...getRootProps({ isFocused, isDragAccept, isDragReject })}>
       <input {...getInputProps()} />
-      Click here to select files, or drag and drop.
+      {children}
     </FileInput>
   );
 };
