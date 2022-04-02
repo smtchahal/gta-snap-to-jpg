@@ -52,7 +52,7 @@ const App = () => {
     let error = false;
     const newImages: Image[] = [];
     for await (const file of files) {
-      let image = await getNameAndJpg(file);
+      const image = await getNameAndJpg(file);
       if (image) {
         newImages.push(image);
       } else {
