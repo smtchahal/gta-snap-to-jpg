@@ -25,6 +25,10 @@ const FileInput = styled.div`
     outline: none;
   }
 
+  &:focus-visible {
+    border-style: solid;
+  }
+
   ${({ isDragAccept }: FileInputProps) => isDragAccept && acceptStyle}
 `;
 

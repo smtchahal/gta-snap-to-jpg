@@ -1,23 +1,18 @@
-export interface Image {
-  name: string;
-  src: string;
-}
-
-export const getNameAndJpg = (file: File): Promise<Image | null> => {
+export const convertSnapmaticToJpeg = (file: File): Promise<File> => {
   const snapmaticOffset = 292;
   const headerLength = 4;
   const mimeHeaders = {
     jpeg: ['ffd8ffe0', 'ffd8ffe1', 'ffd8ffe2', 'ffd8ffe3', 'ffd8ffe8'],
   };
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     if (file.size < snapmaticOffset + headerLength) {
-      resolve(null);
+      reject(new Error('Not a valid Snapmatic file (file too small)'));
       return;
     }
     const reader = new FileReader();
     reader.onload = e => {
       if (e.target === null) {
-        resolve(null);
+        reject(new Error('Failed to read the file'));
         return;
       }
       const result = (e.target as FileReader).result as ArrayBuffer;
@@ -27,14 +22,12 @@ export const getNameAndJpg = (file: File): Promise<Image | null> => {
         .map(i => i.toString(16))
         .join('');
       if (header && mimeHeaders.jpeg.includes(header)) {
-        resolve({
-          name: file.name + '.jpg',
-          src: window.URL.createObjectURL(
-            new Blob([imageArray], { type: 'image/jpeg' }),
-          ),
-        });
+        const blob = new Blob([imageArray], { type: 'image/jpeg' });
+        resolve(new File([blob], file.name + '.jpg'));
       } else {
-        resolve(null);
+        reject(
+          new Error('Not a valid Snapmatic file (converted file not JPEG)'),
+        );
       }
     };
     reader.readAsArrayBuffer(file);

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
 import StyledDropzone from './StyledDropzone';
-import { getNameAndJpg, Image } from '../helpers/util';
+import { convertSnapmaticToJpeg } from '../helpers/util';
+import { downloadZip } from 'client-zip';
 
-const Button = styled.button`
+const buttonStyle = css`
+  font-size: 14px;
+  text-decoration: none;
   cursor: pointer;
   background-color: #1c1f24;
   padding: 12px 16px;
@@ -11,6 +14,14 @@ const Button = styled.button`
   border: none;
   border-radius: 8px;
   color: white;
+`;
+
+const Button = styled.button`
+  ${buttonStyle}
+`;
+
+const Anchor = styled.a`
+  ${buttonStyle};
 `;
 
 const Img = styled.img`
@@ -41,8 +52,23 @@ const DropzoneContainer = styled.div`
   margin-right: auto;
 `;
 
+type Image = {
+  src: string;
+  file: File;
+};
+
 const App = () => {
   const [images, setImages] = useState<Image[]>([]);
+  const [zipUrl, setZipUrl] = useState<string | null>(null);
+
+  const zipFilesAndSetUrl = async (files: File[]) => {
+    if (files.length > 0) {
+      const zipBlob = await downloadZip(files).blob();
+      setZipUrl(URL.createObjectURL(zipBlob));
+    } else {
+      setZipUrl(null);
+    }
+  };
 
   const handleFileSelect = async (files: File[]) => {
     if (files.length === 0) {
@@ -51,11 +77,11 @@ const App = () => {
 
     let error = false;
     const newImages: Image[] = [];
-    for await (const file of files) {
-      const image = await getNameAndJpg(file);
-      if (image) {
-        newImages.push(image);
-      } else {
+    for await (const inputFile of files) {
+      try {
+        const file = await convertSnapmaticToJpeg(inputFile);
+        newImages.push({ file, src: URL.createObjectURL(file) });
+      } catch (e) {
         error = true;
       }
     }
@@ -68,6 +94,13 @@ const App = () => {
 
     setImages(images => images.concat(newImages));
   };
+
+  useEffect(() => {
+    (async () => {
+      const files = images.map(i => i.file);
+      await zipFilesAndSetUrl(files);
+    })();
+  }, [images]);
 
   const clearAll = () => {
     setImages([]);
@@ -92,17 +125,31 @@ const App = () => {
         <>
           <p>
             Click any image to download it.{' '}
-            <Button title="Clear all images" onClick={clearAll}>
+            {zipUrl && (
+              <Anchor
+                href={zipUrl}
+                title="Download all images"
+                style={{ marginLeft: 8 }}
+                download="GTA V snaps.zip"
+              >
+                Download all
+              </Anchor>
+            )}
+            <Button
+              title="Clear all images"
+              onClick={clearAll}
+              style={{ marginLeft: 8 }}
+            >
               Clear all
             </Button>
           </p>
           <Ul>
             {images.map((image, index) => (
               <Li key={index}>
-                <a href={image.src} download={image.name}>
-                  <Img src={image.src} title={image.name} />
+                <a href={image.src} download={image.file.name}>
+                  <Img src={image.src} title={image.file.name} />
                 </a>
-                <span>{image.name}</span>
+                <span>{image.file.name}</span>
               </Li>
             ))}
           </Ul>
