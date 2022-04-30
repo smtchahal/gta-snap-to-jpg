@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.21",
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^3.2.3",
+    "prettier": "^2.6.2"
   }
 }
