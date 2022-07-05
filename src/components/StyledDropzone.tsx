@@ -40,13 +40,8 @@ export interface Props {
 }
 
 const StyledDropzone = ({ onDrop, children }: Props) => {
-  const {
-    getRootProps,
-    getInputProps,
-    isFocused,
-    isDragAccept,
-    isDragReject,
-  } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
+    useDropzone({ onDrop });
 
   return (
     <FileInput {...getRootProps({ isFocused, isDragAccept, isDragReject })}>
