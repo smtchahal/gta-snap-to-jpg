@@ -23,7 +23,7 @@ export const convertSnapmaticToJpeg = (file: File): Promise<File> => {
         .join('');
       if (header && mimeHeaders.jpeg.includes(header)) {
         const blob = new Blob([imageArray], { type: 'image/jpeg' });
-        resolve(new File([blob], file.name + '.jpg'));
+        resolve(new File([blob], `${file.name}.jpg`));
       } else {
         reject(
           new Error('Not a valid Snapmatic file (converted file not JPEG)'),

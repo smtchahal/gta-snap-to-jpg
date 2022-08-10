@@ -108,6 +108,11 @@ const App = () => {
 
   return (
     <div className="container" style={{ textAlign: 'center' }}>
+      <img
+        src={`${process.env.PUBLIC_URL}/logo192.png`}
+        alt="Snapmatic"
+        style={{ width: 92 }}
+      />
       <h1>GTA V Snapmatic to JPEG / JPG converter</h1>
       <p>
         A simple tool to convert your GTA V Snapmatic snaps to JPEG / JPG files.
