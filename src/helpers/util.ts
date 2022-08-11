@@ -1,3 +1,9 @@
+export const ERROR_FILE_TOO_SMALL =
+  'Not a valid Snapmatic file (file too small)';
+
+export const ERROR_INVALID_SNAPMATIC_FILE =
+  'Not a valid Snapmatic file (converted file not JPEG)';
+
 export const convertSnapmaticToJpeg = (file: File): Promise<File> => {
   const snapmaticOffset = 292;
   const headerLength = 4;
@@ -6,11 +12,12 @@ export const convertSnapmaticToJpeg = (file: File): Promise<File> => {
   };
   return new Promise((resolve, reject) => {
     if (file.size < snapmaticOffset + headerLength) {
-      reject(new Error('Not a valid Snapmatic file (file too small)'));
+      reject(new Error(ERROR_FILE_TOO_SMALL));
       return;
     }
     const reader = new FileReader();
     reader.onload = e => {
+      /* istanbul ignore next */
       if (e.target === null) {
         reject(new Error('Failed to read the file'));
         return;
@@ -25,9 +32,7 @@ export const convertSnapmaticToJpeg = (file: File): Promise<File> => {
         const blob = new Blob([imageArray], { type: 'image/jpeg' });
         resolve(new File([blob], `${file.name}.jpg`));
       } else {
-        reject(
-          new Error('Not a valid Snapmatic file (converted file not JPEG)'),
-        );
+        reject(new Error(ERROR_INVALID_SNAPMATIC_FILE));
       }
     };
     reader.readAsArrayBuffer(file);

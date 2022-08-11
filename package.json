@@ -75,6 +75,7 @@
     "@testing-library/user-event": "^7.2.1",
     "@types/jest": "^28.1.6",
     "@types/styled-components": "^5.1.21",
+    "blob-polyfill": "^7.0.20220408",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gh-pages": "^3.2.3",

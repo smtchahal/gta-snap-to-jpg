@@ -60,6 +60,7 @@ type Image = {
 const App = () => {
   const [images, setImages] = useState<Image[]>([]);
   const [zipUrl, setZipUrl] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const zipFilesAndSetUrl = async (files: File[]) => {
     if (files.length > 0) {
@@ -75,6 +76,7 @@ const App = () => {
       return;
     }
 
+    setLoading(true);
     let error = false;
     const newImages: Image[] = [];
     for await (const inputFile of files) {
@@ -93,6 +95,7 @@ const App = () => {
     }
 
     setImages(images => images.concat(newImages));
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -121,30 +124,37 @@ const App = () => {
         <b>Note:</b> This only works locally. All conversion takes place in your
         browser. No files are uploaded.
       </p>
-      <DropzoneContainer>
-        <StyledDropzone onDrop={handleFileSelect}>
-          Click here to select files, or drag and drop.
-        </StyledDropzone>
-      </DropzoneContainer>
+      {loading ? (
+        <p style={{ color: '#55b7ff' }}>Converting images...</p>
+      ) : (
+        <DropzoneContainer>
+          <StyledDropzone onDrop={handleFileSelect}>
+            Click here to select files, or drag and drop.
+          </StyledDropzone>
+        </DropzoneContainer>
+      )}
       {images.length > 0 && (
         <>
-          <p>
+          <p
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              alignItems: 'baseline',
+              gap: 8,
+            }}
+          >
             Click any image to download it.{' '}
             {zipUrl && (
               <Anchor
                 href={zipUrl}
                 title="Download all images"
-                style={{ marginLeft: 8 }}
                 download="GTA V snaps.zip"
               >
                 Download all
               </Anchor>
             )}
-            <Button
-              title="Clear all images"
-              onClick={clearAll}
-              style={{ marginLeft: 8 }}
-            >
+            <Button title="Clear all images" onClick={clearAll}>
               Clear all
             </Button>
           </p>
