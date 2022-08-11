@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/gta-snap-to-jpg/static/css/main.1fce29f9.css",
-    "main.js": "/gta-snap-to-jpg/static/js/main.0bb3ba11.js",
+    "main.css": "/gta-snap-to-jpg/static/css/main.8307132f.css",
+    "main.js": "/gta-snap-to-jpg/static/js/main.b9fcf8a2.js",
     "static/js/787.70b69c64.chunk.js": "/gta-snap-to-jpg/static/js/787.70b69c64.chunk.js",
     "service-worker.js": "/gta-snap-to-jpg/service-worker.js",
     "index.html": "/gta-snap-to-jpg/index.html",
-    "main.1fce29f9.css.map": "/gta-snap-to-jpg/static/css/main.1fce29f9.css.map",
-    "main.0bb3ba11.js.map": "/gta-snap-to-jpg/static/js/main.0bb3ba11.js.map",
+    "main.8307132f.css.map": "/gta-snap-to-jpg/static/css/main.8307132f.css.map",
+    "main.b9fcf8a2.js.map": "/gta-snap-to-jpg/static/js/main.b9fcf8a2.js.map",
     "787.70b69c64.chunk.js.map": "/gta-snap-to-jpg/static/js/787.70b69c64.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1fce29f9.css",
-    "static/js/main.0bb3ba11.js"
+    "static/css/main.8307132f.css",
+    "static/js/main.b9fcf8a2.js"
   ]
 }
