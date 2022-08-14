@@ -58,9 +58,9 @@ type Image = {
 };
 
 const App = () => {
-  const [images, setImages] = useState<Image[]>([]);
+  const [images, setImages] = useState<string[]>([]);
   const [zipUrl, setZipUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+   const [loading, setLoading] = useState(false);
 
   const zipFilesAndSetUrl = async (files: File[]) => {
     if (files.length > 1) {
