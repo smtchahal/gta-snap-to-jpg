@@ -62,10 +62,6 @@ const App = () => {
   const [zipUrl, setZipUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const unused = 'variable';
-
-  const anotherOne = 'lol';
-
   const zipFilesAndSetUrl = async (files: File[]) => {
     if (files.length > 1) {
       const zip = new JSZip();
