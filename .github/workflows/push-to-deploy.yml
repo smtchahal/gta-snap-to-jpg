@@ -5,6 +5,11 @@ on:
     branches:
       - master
 
+    paths:
+      - 'src/**.[jt]sx?'
+      - '!src/**/__tests__/**'
+      - '!src/**.test.[jt]sx?'
+
 permissions:
   contents: write
 
