@@ -25,13 +25,22 @@ jobs:
       - name: Build and test 🔧
         run: |
           npm ci
-          npx eslint src --ext .js,.jsx,.ts,.tsx
+          npm install @microsoft/eslint-formatter-sarif@2.1.7
+          npx eslint src --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
           npx tsc --project .
           npm run build --if-present
           npm test -- --coverage
 
       - name: Upload code coverage 🚀
+        if: always()
         uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
           verbose: true
+
+      - name: Upload analysis results to GitHub 🚀
+        if: always()
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: eslint-results.sarif
+          wait-for-processing: true
