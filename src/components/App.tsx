@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import StyledDropzone from './StyledDropzone';
 import { convertSnapmaticToJpeg } from '../helpers/util';
-import { downloadZip } from 'client-zip';
+import JSZip from 'jszip';
 
 const buttonStyle = css`
   font-size: 14px;
@@ -63,8 +63,12 @@ const App = () => {
   const [loading, setLoading] = useState(false);
 
   const zipFilesAndSetUrl = async (files: File[]) => {
-    if (files.length > 0) {
-      const zipBlob = await downloadZip(files).blob();
+    if (files.length > 1) {
+      const zip = new JSZip();
+      for (const file of files) {
+        zip.file(file.name, file);
+      }
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
       setZipUrl(URL.createObjectURL(zipBlob));
     } else {
       setZipUrl(null);
@@ -72,6 +76,7 @@ const App = () => {
   };
 
   const handleFileSelect = async (files: File[]) => {
+    /* istanbul ignore next */
     if (files.length === 0) {
       return;
     }
