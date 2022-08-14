@@ -23,6 +23,9 @@ jobs:
           node-version: 16.x
 
       - name: Build and test 🔧
+        env:
+          DISABLE_ESLINT_PLUGIN: true
+          TSC_COMPILE_ON_ERROR: true
         run: |
           npm ci
           npm run build
