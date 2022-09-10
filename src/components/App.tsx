@@ -117,7 +117,7 @@ const App = () => {
   return (
     <div className="container" style={{ textAlign: 'center' }}>
       <img
-        src={`${process.env.PUBLIC_URL}/logo192.png`}
+        src={`${import.meta.env.BASE_URL}logo192.png`}
         alt="Snapmatic"
         style={{ width: 92 }}
       />
