@@ -7,7 +7,7 @@ on:
 
     paths:
       - 'src/**.[jt]sx?'
-      - 'github/workflows/push-to-deploy.yml'
+      - '.github/workflows/push-to-deploy.yml'
       - '!src/**/__tests__/**'
       - '!src/**.test.[jt]sx?'
 
