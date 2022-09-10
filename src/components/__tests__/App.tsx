@@ -4,6 +4,7 @@ import { render, screen } from '@testing-library/react';
 import App from '../App';
 import userEvent from '@testing-library/user-event';
 import * as fs from 'fs';
+import { vi } from 'vitest';
 
 const selectAndGetFileInput = () => {
   const button = screen.getByText(/select files/i);
@@ -39,10 +40,8 @@ const checkConvertedFiles = async (validFiles: File[]) => {
   }
 };
 
-window.alert = jest.fn();
-if (window.URL.createObjectURL === undefined) {
-  window.URL.createObjectURL = () => 'blob:http://localhost/';
-}
+window.alert = vi.fn();
+window.URL.createObjectURL = () => 'blob:http://localhost/';
 
 const invalidFile1 = new File(['hello'], 'hello.txt', { type: 'text/plain' });
 const invalidFile2 = new File(['something else'], 'hello.png', {
@@ -54,7 +53,7 @@ const [validFile1, validFile2] = ['snapmatic1', 'snapmatic2'].map(
 
 describe('App', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('renders correctly', () => {
@@ -74,9 +73,9 @@ describe('App', () => {
   it('converts valid file', async () => {
     render(<App />);
     const fileInput = selectAndGetFileInput();
+    expect(window.alert).not.toHaveBeenCalled();
     await uploadAndCheck(fileInput, [validFile1]);
     await checkConvertedFiles([validFile1]);
-    expect(window.alert).not.toHaveBeenCalled();
   });
 
   it('shows alert for invalid and converts valid files', async () => {
