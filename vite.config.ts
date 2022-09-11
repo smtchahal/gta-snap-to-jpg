@@ -50,6 +50,7 @@ export default defineConfig({
       '**/__tests__/**.{js,ts,jsx,tsx}',
     ],
     coverage: {
+      provider: 'istanbul',
       all: true,
       include: ['src/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
       exclude: [

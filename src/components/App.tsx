@@ -76,7 +76,7 @@ const App = () => {
   };
 
   const handleFileSelect = async (files: File[]) => {
-    /* istanbul ignore next */
+    /* istanbul ignore if -- @preserve */
     if (files.length === 0) {
       return;
     }
