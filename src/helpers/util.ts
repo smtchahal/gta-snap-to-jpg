@@ -17,7 +17,7 @@ export const convertSnapmaticToJpeg = (file: File): Promise<File> => {
     }
     const reader = new FileReader();
     reader.onload = e => {
-      /* istanbul ignore next */
+      /* istanbul ignore if -- @preserve */
       if (e.target === null) {
         reject(new Error('Failed to read the file'));
         return;
