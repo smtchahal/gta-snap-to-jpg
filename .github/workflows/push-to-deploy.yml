@@ -10,6 +10,7 @@ on:
       - '.github/workflows/push-to-deploy.yml'
       - '!src/**/__tests__/**'
       - '!src/**.test.[jt]sx?'
+      - 'package-lock.json'
 
 permissions:
   contents: write
