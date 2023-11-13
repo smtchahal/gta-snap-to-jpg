@@ -1,7 +1,0 @@
-singleQuote: true
-arrowParens: avoid
-endOfLine: lf
-trailingComma: all
-jsxSingleQuote: false
-useTabs: false
-tabWidth: 2
