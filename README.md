@@ -1,10 +1,38 @@
-# GTA V Snapmatic to JPEG / JPG converter
+# create-svelte
 
-[![example workflow](https://github.com/smtchahal/gta-snap-to-jpg/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/smtchahal/gta-snap-to-jpg/actions/workflows/build-and-test.yml)
-[![codecov](https://codecov.io/gh/smtchahal/gta-snap-to-jpg/branch/master/graph/badge.svg)](https://codecov.io/gh/smtchahal/gta-snap-to-jpg)
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-A simple tool to convert your GTA V Snapmatic files to JPEG / JPG images.
+## Creating a project
 
-**Note**: This only works locally. All conversion takes place in your browser. No files are uploaded.
+If you're seeing this, you've probably already done this step. Congrats!
 
-https://smtchahal.github.io/gta-snap-to-jpg/
+```bash
+# create a new project in the current directory
+npm create svelte@latest
+
+# create a new project in my-app
+npm create svelte@latest my-app
+```
+
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
