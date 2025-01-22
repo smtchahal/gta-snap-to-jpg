@@ -17,10 +17,10 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 
-      - name: Use Node.js 16.x 🐧
+      - name: Use Node.js 20 🐧
         uses: actions/setup-node@v2
         with:
-          node-version: 16.x
+          node-version: 20
 
       - name: Build and test 🔧
         env:
