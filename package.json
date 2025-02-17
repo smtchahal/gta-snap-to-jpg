@@ -19,24 +19,24 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.26",
-    "@vitejs/plugin-react": "^2.1.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-istanbul": "^0.23.2",
     "blob-polyfill": "^7.0.20220408",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "jsdom": "^20.0.0",
+    "jsdom": "^26.0.0",
     "prettier": "^2.7.1",
     "typescript": "^4.6.4",
-    "vite": "^3.2.10",
+    "vite": "^6.1.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-pwa": "^0.12.7",
-    "vitest": "^0.23.1"
+    "vite-plugin-pwa": "^0.21.1",
+    "vitest": "^3.0.5"
   }
 }
