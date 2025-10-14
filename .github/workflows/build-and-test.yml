@@ -39,10 +39,9 @@ jobs:
 
       - name: Upload code coverage 🚀
         if: always()
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
 
