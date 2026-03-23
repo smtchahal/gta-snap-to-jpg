@@ -17,6 +17,9 @@
     "react-dropzone": "^14.2.2",
     "styled-components": "^5.3.5"
   },
+  "overrides": {
+    "serialize-javascript": "^7.0.3"
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^16.2.0",
