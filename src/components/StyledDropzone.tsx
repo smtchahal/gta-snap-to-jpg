@@ -1,36 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
 import { useDropzone } from 'react-dropzone';
-
-interface FileInputProps {
-  isDragAccept: boolean;
-}
-
-const lightGreen = '#8bff8b';
-
-const acceptStyle = css`
-  border-color: ${lightGreen};
-  color: ${lightGreen};
-`;
-
-const FileInput = styled.div`
-  cursor: pointer;
-  border: dashed white 2px;
-  border-radius: 8px;
-  padding: 16px;
-  user-select: none;
-
-  &:focus,
-  &:active {
-    outline: none;
-  }
-
-  &:focus-visible {
-    border-style: solid;
-  }
-
-  ${({ isDragAccept }: FileInputProps) => isDragAccept && acceptStyle}
-`;
+import clsx from 'clsx';
 
 export interface Props {
   onDrop: {
@@ -40,14 +10,19 @@ export interface Props {
 }
 
 const StyledDropzone = ({ onDrop, children }: Props) => {
-  const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
-    useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragAccept } = useDropzone({ onDrop });
 
   return (
-    <FileInput {...getRootProps({ isFocused, isDragAccept, isDragReject })}>
+    <div
+      {...getRootProps()}
+      className={clsx(
+        'cursor-pointer border-2 border-dashed rounded-lg p-4 select-none focus:outline-none active:outline-none focus-visible:border-solid',
+        isDragAccept ? 'border-[#8bff8b] text-[#8bff8b]' : 'border-white',
+      )}
+    >
       <input {...getInputProps()} />
       {children}
-    </FileInput>
+    </div>
   );
 };
 

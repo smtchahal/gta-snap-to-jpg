@@ -1,56 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
 import StyledDropzone from './StyledDropzone';
 import { convertSnapmaticToJpeg } from '../helpers/util';
 import JSZip from 'jszip';
 
-const buttonStyle = css`
-  font-size: 14px;
-  text-decoration: none;
-  cursor: pointer;
-  background-color: #1c1f24;
-  padding: 12px 16px;
-  user-select: none;
-  border: none;
-  border-radius: 8px;
-  color: white;
-`;
-
-const Button = styled.button`
-  ${buttonStyle}
-`;
-
-const Anchor = styled.a`
-  ${buttonStyle};
-`;
-
-const Img = styled.img`
-  width: 100%;
-`;
-
-const Ul = styled.ul`
-  padding: 0;
-  margin: 16px auto 0;
-  list-style: none;
-  max-width: 50vw;
-
-  @media (max-width: 767.98px) {
-    max-width: 100%;
-  }
-`;
-
-const Li = styled.li`
-  margin-top: 16px;
-`;
-
-const DropzoneContainer = styled.div`
-  margin-top: 16px;
-  max-width: 400px;
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-`;
+const buttonClass =
+  'text-sm no-underline cursor-pointer bg-[#1c1f24] py-3 px-4 select-none border-0 rounded-lg text-white';
 
 type Image = {
   src: string;
@@ -115,64 +69,68 @@ const App = () => {
   };
 
   return (
-    <div className="container" style={{ textAlign: 'center' }}>
+    <div className="px-4 pb-4 text-center">
       <img
         src={`${import.meta.env.BASE_URL}logo192.png`}
         alt="Snapmatic"
-        style={{ width: 92 }}
+        className="w-[92px] mx-auto"
       />
-      <h1>GTA V Snapmatic to JPEG / JPG converter</h1>
+      <h1 className="text-[2em] font-bold my-[0.67em]">
+        GTA V Snapmatic to JPEG / JPG converter
+      </h1>
       <p>
         A simple tool to convert your GTA V Snapmatic snaps to JPEG / JPG files.
       </p>
-      <p>
+      <p className="mt-4">
         <b>Note:</b> This only works locally. All conversion takes place in your
         browser. No files are uploaded.
       </p>
       {loading ? (
-        <p style={{ color: '#55b7ff' }}>Converting images...</p>
+        <p className="text-[#55b7ff]">Converting images...</p>
       ) : (
-        <DropzoneContainer>
+        <div className="mt-4 max-w-[400px] flex justify-center mx-auto">
           <StyledDropzone onDrop={handleFileSelect}>
             Click here to select files, or drag and drop.
           </StyledDropzone>
-        </DropzoneContainer>
+        </div>
       )}
       {images.length > 0 && (
         <>
-          <p
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              alignItems: 'baseline',
-              gap: 8,
-            }}
-          >
+          <p className="flex flex-wrap justify-center items-baseline gap-2 mt-3">
             Click any image to download it.{' '}
             {zipUrl && (
-              <Anchor
+              <a
                 href={zipUrl}
                 title="Download all images"
                 download="GTA V snaps.zip"
+                className={buttonClass}
               >
                 Download all
-              </Anchor>
+              </a>
             )}
-            <Button title="Clear all images" onClick={clearAll}>
+            <button
+              title="Clear all images"
+              onClick={clearAll}
+              className={buttonClass}
+            >
               Clear all
-            </Button>
+            </button>
           </p>
-          <Ul>
+          <ul className="p-0 mt-4 mx-auto list-none max-w-full md:max-w-[50vw]">
             {images.map((image, index) => (
-              <Li key={index}>
+              <li key={index} className="mt-4">
                 <a href={image.src} download={image.file.name}>
-                  <Img src={image.src} title={image.file.name} />
+                  <img
+                    src={image.src}
+                    alt=""
+                    title={image.file.name}
+                    className="w-full"
+                  />
                 </a>
                 <span>{image.file.name}</span>
-              </Li>
+              </li>
             ))}
-          </Ul>
+          </ul>
         </>
       )}
     </div>
