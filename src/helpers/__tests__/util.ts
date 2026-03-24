@@ -10,7 +10,11 @@ const validFileName = 'snapmatic';
 describe('convertSnapmaticToJpeg', () => {
   it('should convert a Snapmatic file to a JPEG file', async () => {
     const file = new File(
-      [fs.readFileSync(`${__dirname}/fixtures/${validFileName}`)],
+      [
+        new Uint8Array(
+          fs.readFileSync(`${__dirname}/fixtures/${validFileName}`),
+        ),
+      ],
       validFileName,
     );
     const result = await convertSnapmaticToJpeg(file);
@@ -24,7 +28,7 @@ describe('convertSnapmaticToJpeg', () => {
   it('should fail for empty files', async () => {
     expect.assertions(1);
     const file = new File(
-      [fs.readFileSync(`${__dirname}/fixtures/empty`)],
+      [new Uint8Array(fs.readFileSync(`${__dirname}/fixtures/empty`))],
       validFileName,
     );
     try {
@@ -37,7 +41,7 @@ describe('convertSnapmaticToJpeg', () => {
   it('should fail for JPEG files', async () => {
     expect.assertions(1);
     const file = new File(
-      [fs.readFileSync(`${__dirname}/fixtures/sample.jpg`)],
+      [new Uint8Array(fs.readFileSync(`${__dirname}/fixtures/sample.jpg`))],
       validFileName,
     );
     try {
@@ -50,7 +54,7 @@ describe('convertSnapmaticToJpeg', () => {
   it('should fail for small files', async () => {
     expect.assertions(1);
     const file = new File(
-      [fs.readFileSync(`${__dirname}/fixtures/small.txt`)],
+      [new Uint8Array(fs.readFileSync(`${__dirname}/fixtures/small.txt`))],
       validFileName,
     );
     try {
