@@ -62,6 +62,12 @@ export default defineConfig({
         '**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
         '**/__tests__/**.{js,ts,jsx,tsx}',
       ],
+      thresholds: {
+        lines: 100,
+        branches: 100,
+        functions: 100,
+        statements: 100,
+      },
     },
   },
 });
