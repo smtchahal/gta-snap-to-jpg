@@ -48,7 +48,11 @@ const invalidFile2 = new File(['something else'], 'hello.png', {
   type: 'text/png',
 });
 const [validFile1, validFile2] = ['snapmatic1', 'snapmatic2'].map(
-  name => new File([fs.readFileSync(`${__dirname}/fixtures/${name}`)], name),
+  name =>
+    new File(
+      [new Uint8Array(fs.readFileSync(`${__dirname}/fixtures/${name}`))],
+      name,
+    ),
 );
 
 describe('App', () => {

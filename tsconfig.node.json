@@ -2,8 +2,12 @@
   "compilerOptions": {
     "composite": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "paths": {
+      "vite-plugin-eslint": ["./node_modules/vite-plugin-eslint/dist/index"]
+    }
   },
   "include": ["vite.config.ts"]
 }
