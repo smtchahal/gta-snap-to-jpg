@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StyledDropzone from './StyledDropzone';
+import UpdatePrompt from './UpdatePrompt';
 import { convertSnapmaticToJpeg } from '../helpers/util';
 import JSZip from 'jszip';
 
@@ -69,71 +70,75 @@ const App = () => {
   };
 
   return (
-    <div className="px-4 pb-4 text-center">
-      <img
-        src={`${import.meta.env.BASE_URL}logo192.png`}
-        alt="Snapmatic"
-        className="w-[92px] mx-auto"
-      />
-      <h1 className="text-[2em] font-bold my-[0.67em]">
-        GTA V Snapmatic to JPEG / JPG converter
-      </h1>
-      <p>
-        A simple tool to convert your GTA V Snapmatic snaps to JPEG / JPG files.
-      </p>
-      <p className="mt-4">
-        <b>Note:</b> This only works locally. All conversion takes place in your
-        browser. No files are uploaded.
-      </p>
-      {loading ? (
-        <p className="text-[#55b7ff]">Converting images...</p>
-      ) : (
-        <div className="mt-4 max-w-[400px] flex justify-center mx-auto">
-          <StyledDropzone onDrop={handleFileSelect}>
-            Click here to select files, or drag and drop.
-          </StyledDropzone>
-        </div>
-      )}
-      {images.length > 0 && (
-        <>
-          <p className="flex flex-wrap justify-center items-baseline gap-2 mt-3">
-            Click any image to download it.{' '}
-            {zipUrl && (
-              <a
-                href={zipUrl}
-                title="Download all images"
-                download="GTA V snaps.zip"
+    <>
+      <UpdatePrompt />
+      <div className="px-4 pb-4 text-center">
+        <img
+          src={`${import.meta.env.BASE_URL}logo192.png`}
+          alt="Snapmatic"
+          className="w-[92px] mx-auto"
+        />
+        <h1 className="text-[2em] font-bold my-[0.67em]">
+          GTA V Snapmatic to JPEG / JPG converter
+        </h1>
+        <p>
+          A simple tool to convert your GTA V Snapmatic snaps to JPEG / JPG
+          files.
+        </p>
+        <p className="mt-4">
+          <b>Note:</b> This only works locally. All conversion takes place in
+          your browser. No files are uploaded.
+        </p>
+        {loading ? (
+          <p className="text-[#55b7ff]">Converting images...</p>
+        ) : (
+          <div className="mt-4 max-w-[400px] flex justify-center mx-auto">
+            <StyledDropzone onDrop={handleFileSelect}>
+              Click here to select files, or drag and drop.
+            </StyledDropzone>
+          </div>
+        )}
+        {images.length > 0 && (
+          <>
+            <p className="flex flex-wrap justify-center items-baseline gap-2 mt-3">
+              Click any image to download it.{' '}
+              {zipUrl && (
+                <a
+                  href={zipUrl}
+                  title="Download all images"
+                  download="GTA V snaps.zip"
+                  className={buttonClass}
+                >
+                  Download all
+                </a>
+              )}
+              <button
+                title="Clear all images"
+                onClick={clearAll}
                 className={buttonClass}
               >
-                Download all
-              </a>
-            )}
-            <button
-              title="Clear all images"
-              onClick={clearAll}
-              className={buttonClass}
-            >
-              Clear all
-            </button>
-          </p>
-          <ul className="p-0 mt-4 mx-auto list-none max-w-full md:max-w-[50vw]">
-            {images.map((image, index) => (
-              <li key={index} className="mt-4">
-                <a href={image.src} download={image.file.name}>
-                  <img
-                    src={image.src}
-                    alt=""
-                    title={image.file.name}
-                    className="w-full"
-                  />
-                </a>
-                <span>{image.file.name}</span>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-    </div>
+                Clear all
+              </button>
+            </p>
+            <ul className="p-0 mt-4 mx-auto list-none max-w-full md:max-w-[50vw]">
+              {images.map((image, index) => (
+                <li key={index} className="mt-4">
+                  <a href={image.src} download={image.file.name}>
+                    <img
+                      src={image.src}
+                      alt=""
+                      title={image.file.name}
+                      className="w-full"
+                    />
+                  </a>
+                  <span>{image.file.name}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

@@ -12,7 +12,7 @@ export default defineConfig({
     tailwindcss(),
     react(),
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
       manifest: {
         short_name: 'GTA V Snapmatic to JPEG Converter',
         theme_color: '#000000',
