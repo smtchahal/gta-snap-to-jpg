@@ -1,1 +1,0 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/gta-snap-to-jpg/sw.js', { scope: '/gta-snap-to-jpg/' })})}
