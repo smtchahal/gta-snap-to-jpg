@@ -1,10 +1,12 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-
 import App from '../App';
 import userEvent from '@testing-library/user-event';
 import * as fs from 'fs';
 import { vi } from 'vitest';
+
+vi.mock('vanilla-cookieconsent/dist/cookieconsent.css', () => ({}));
+vi.mock('vanilla-cookieconsent', () => ({ run: vi.fn() }));
 
 const selectAndGetFileInput = () => {
   const button = screen.getByText(/select files/i);

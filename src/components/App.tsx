@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import StyledDropzone from './StyledDropzone';
 import UpdatePrompt from './UpdatePrompt';
+import CookieConsent from './CookieConsent';
 import { convertSnapmaticToJpeg } from '../helpers/util';
 import JSZip from 'jszip';
 
@@ -72,6 +73,7 @@ const App = () => {
   return (
     <>
       <UpdatePrompt />
+      <CookieConsent />
       <div className="px-4 pb-4 text-center">
         <img
           src={`${import.meta.env.BASE_URL}logo192.png`}
