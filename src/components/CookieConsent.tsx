@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import 'vanilla-cookieconsent/dist/cookieconsent.css';
-import * as CookieConsent from 'vanilla-cookieconsent';
+import * as VanillaCookieConsent from 'vanilla-cookieconsent';
 
-const CookieConsentComponent = () => {
+const CookieConsent = () => {
   useEffect(() => {
-    CookieConsent.run({
+    VanillaCookieConsent.run({
       categories: {
         necessary: {
           enabled: true,
@@ -53,4 +53,4 @@ const CookieConsentComponent = () => {
   return null;
 };
 
-export default CookieConsentComponent;
+export default CookieConsent;

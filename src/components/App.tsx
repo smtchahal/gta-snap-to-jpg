@@ -3,6 +3,7 @@ import StyledDropzone from './StyledDropzone';
 import UpdatePrompt from './UpdatePrompt';
 import CookieConsent from './CookieConsent';
 import { convertSnapmaticToJpeg } from '../helpers/util';
+import { trackEvent } from '../helpers/analytics';
 import JSZip from 'jszip';
 
 const buttonClass =
@@ -37,22 +38,31 @@ const App = () => {
       return;
     }
 
+    trackEvent('upload_files', { count: files.length });
     setLoading(true);
-    let error = false;
+    let failedCount = 0;
     const newImages: Image[] = [];
     for await (const inputFile of files) {
       try {
         const file = await convertSnapmaticToJpeg(inputFile);
         newImages.push({ file, src: URL.createObjectURL(file) });
       } catch (e) {
-        error = true;
+        failedCount++;
       }
     }
 
-    if (error) {
+    if (failedCount > 0) {
       alert(
         'Some images could not be converted, as they were not valid Snapmatic images',
       );
+      trackEvent('conversion_failure', { failed_count: failedCount });
+    }
+
+    if (newImages.length > 0) {
+      trackEvent('convert_images', {
+        count: newImages.length,
+        failed_count: failedCount,
+      });
     }
 
     setImages(images => images.concat(newImages));
@@ -67,6 +77,7 @@ const App = () => {
   }, [images]);
 
   const clearAll = () => {
+    trackEvent('clear_all', { count: images.length });
     setImages([]);
   };
 
@@ -110,6 +121,9 @@ const App = () => {
                   title="Download all images"
                   download="GTA V snaps.zip"
                   className={buttonClass}
+                  onClick={() =>
+                    trackEvent('download_all_zip', { count: images.length })
+                  }
                 >
                   Download all
                 </a>
@@ -125,7 +139,11 @@ const App = () => {
             <ul className="p-0 mt-4 mx-auto list-none max-w-full md:max-w-[50vw]">
               {images.map((image, index) => (
                 <li key={index} className="mt-4">
-                  <a href={image.src} download={image.file.name}>
+                  <a
+                    href={image.src}
+                    download={image.file.name}
+                    onClick={() => trackEvent('download_image')}
+                  >
                     <img
                       src={image.src}
                       alt=""
