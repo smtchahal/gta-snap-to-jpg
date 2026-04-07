@@ -45,7 +45,7 @@
     "lint-staged": "^16.4.0",
     "prettier": "^2.7.1",
     "typescript": "^6.0.2",
-    "vite": "^6.4.1",
+    "vite": "^6.4.2",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-pwa": "^0.21.1",
     "vitest": "^3.0.5"
