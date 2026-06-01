@@ -34,7 +34,7 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^4.3.4",
-    "@vitest/coverage-istanbul": "^3.0.5",
+    "@vitest/coverage-istanbul": "^4.1.8",
     "blob-polyfill": "^7.0.20220408",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
@@ -48,6 +48,6 @@
     "vite": "^6.4.2",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-pwa": "^0.21.1",
-    "vitest": "^3.0.5"
+    "vitest": "^4.1.8"
   }
 }
