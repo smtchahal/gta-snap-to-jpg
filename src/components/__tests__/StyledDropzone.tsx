@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import { useDropzone } from 'react-dropzone';
 import { vi } from 'vitest';

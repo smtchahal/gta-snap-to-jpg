@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { useDropzone } from 'react-dropzone';
 import clsx from 'clsx';
 
@@ -6,7 +6,7 @@ export interface Props {
   onDrop: {
     (files: File[]): void;
   };
-  children: any;
+  children: ReactNode;
 }
 
 const StyledDropzone = ({ onDrop, children }: Props) => {

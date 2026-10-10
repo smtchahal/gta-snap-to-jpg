@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { trackEvent } from '../helpers/analytics';
 
