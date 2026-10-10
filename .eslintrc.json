@@ -1,6 +1,23 @@
 {
+  "root": true,
+  "parser": "@typescript-eslint/parser",
   "plugins": ["prettier"],
-  "extends": ["react-app", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
+  "settings": {
+    "react": { "version": "detect" }
+  },
+  "env": {
+    "browser": true,
+    "es2022": true
+  },
   "rules": {
     "arrow-body-style": ["error", "as-needed"],
     "no-unused-expressions": "error",

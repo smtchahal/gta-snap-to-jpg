@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import StyledDropzone from './StyledDropzone';
 import UpdatePrompt from './UpdatePrompt';
 import CookieConsent from './CookieConsent';
@@ -46,7 +46,7 @@ const App = () => {
       try {
         const file = await convertSnapmaticToJpeg(inputFile);
         newImages.push({ file, src: URL.createObjectURL(file) });
-      } catch (e) {
+      } catch {
         failedCount++;
       }
     }
