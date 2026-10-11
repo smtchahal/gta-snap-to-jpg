@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2
+        uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
 
       - name: Use Node.js 22 🐧
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@7c12f8017d5436eb855f1ed4399f037a36fbd9e8 # v2.5.2
         with:
           node-version: 22
 
@@ -39,7 +39,7 @@ jobs:
 
       - name: Upload code coverage 🚀
         if: always()
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5.5.5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
@@ -47,7 +47,7 @@ jobs:
 
       - name: Upload analysis results to GitHub 🚀
         if: always()
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@9f759ee644a3e7c15c1390abf49868036c00067b # v3.38.3
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
