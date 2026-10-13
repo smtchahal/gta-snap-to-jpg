@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { useDropzone } from 'react-dropzone';
 import clsx from 'clsx';
 
-export interface Props {
+interface Props {
   onDrop: {
     (files: File[]): void;
   };

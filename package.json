@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "prepare": "husky"
+    "prepare": "husky",
+    "knip": "knip"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
@@ -47,6 +48,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "husky": "^9.1.7",
     "jsdom": "^26.0.0",
+    "knip": "^6.41.0",
     "lint-staged": "^16.4.0",
     "prettier": "^2.7.1",
     "typescript": "^6.0.2",
